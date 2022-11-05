@@ -1,0 +1,27 @@
+-----Apex Class
+
+public with sharing class animalAPI {
+    public static void sendAnimalName(){
+        Http http = new Http(); //envelope
+
+        HttpRequest request= new HttpRequest();
+
+        request.setEndpoint('https://th-apex-http-callout.herokuapp.com/animals');  //Remote setting has been done for this URL!!!!!
+        request.setMethod('POST');
+        request.setHeader('Content-Type', 'application/json;charset=UTF-8');
+        request.setBody('{"name":"super cat"}');
+
+        HttpResponse response = new HttpResponse();
+        response = http.send(request);
+
+        if(response.getStatusCode() != 201){
+
+            system.debug('Request was not successful!' + 'Error Code: ' + response.getStatusCode());
+        } else {
+
+            system.debug (response.getBody());
+        }
+
+    }
+}
+
