@@ -25,3 +25,5 @@ public with sharing class animalAPI {
     }
 }
 
+------http Response Website : https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
