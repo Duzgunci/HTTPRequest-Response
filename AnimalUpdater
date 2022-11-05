@@ -1,12 +1,13 @@
 -----Apex Class
 
-public with sharing class animalAPI {
+public class animalAPI {
+    @InvocableMethod /// Will allow Flow to use it!
     public static void sendAnimalName(){
         Http http = new Http(); //envelope
 
         HttpRequest request= new HttpRequest();
 
-        request.setEndpoint('https://th-apex-http-callout.herokuapp.com/animals');  //Remote setting has been done for this URL!!!!!
+        request.setEndpoint('https://th-apex-http-callout.herokuapp.com/animals');
         request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json;charset=UTF-8');
         request.setBody('{"name":"super cat"}');
@@ -20,10 +21,25 @@ public with sharing class animalAPI {
         } else {
 
             system.debug (response.getBody());
+            
         }
-
+   
     }
 }
 
+
 ------http Response Website : https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+-------Debug Screen
+
+animalAPI.sendAnimalName();
+
+------ @InvocableMethod will allow to call from Flow.
+
+
+
+
+
+
+
 
